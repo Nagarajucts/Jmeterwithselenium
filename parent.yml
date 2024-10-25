@@ -1,0 +1,23 @@
+name: Functional testing 
+
+name: Workflow A
+
+on:
+  workflow_dispatch 
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Step 1 of Workflow A
+        run: echo "This is Workflow A - Step 1"
+
+ name: Workflow B
+
+on:
+  workflow_run:
+    workflows: ["Workflow A"]  
+    types:
+      - completed 
+
